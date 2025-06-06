@@ -1,6 +1,9 @@
 {{/* check if there is any hero image in the same folder as the markdown file */}}
 {{ $heroImage := .Page.Resources.GetMatch "hero.{jpg,png,svg}"}}
 
+{{/* check if there is a hero image in the assets site folder as the markdown file */}}
+{{ $heroImage := resources.GetMatch "images/site/hero.{jpg,png,svg}"}}
+
 {{/*  if hero image is specified in the page front-matter, then use that  */}}
 {{ if .Params.hero }}
   {{/*  try to read from the page bundle  */}}
