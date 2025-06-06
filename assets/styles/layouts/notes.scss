@@ -31,6 +31,7 @@ body.type-notes {
           .note-card {
             align-self: flex-start;
             flex: auto;
+            max-width: 50%;
 
             .card {
               margin: 0.5rem;
