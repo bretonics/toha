@@ -56,7 +56,7 @@
   {{ $logo = $invertedLogo }}
 {{ end }}
 
-{{ $customMenus := site.Params.customMenus }}
+{{ $customMenus := site.Data.site.customMenus }}
 {{ if (index site.Data site.Language.Lang).site.customMenus }}
   {{ $customMenus = (index site.Data site.Language.Lang).site.customMenus }}
 {{ end }}
