@@ -43,7 +43,10 @@
         <div class="author-profile ms-auto align-self-lg-center">
           <img class="rounded-circle" src='{{ partial "helpers/get-author-image.html" . }}' alt="Author Image">
           <h5 class="author-name">{{ partial "helpers/get-author-name.html" . }}</h5>
-          <p class="text-muted">{{ .Page.Date | time.Format ":date_full" }}{{ if site.Params.features.readingTime }} | {{ .ReadingTime }} {{i18n "minute" .ReadingTime }}{{ end }}</p>
+          <p class="text-muted">{{ .Page.Date | time.Format ":date_full" }}{{ if site.Params.features.readingTime }} | <span class="badge bg-light text-dark">{{ .ReadingTime }} {{i18n "minute" .ReadingTime }}{{ end }}</span></p>
+          {{ if (and .GitInfo (gt .Page.Lastmod.Unix .Page.Date.Unix) ) }}
+            <p><span class="badge bg-info text-light">Updated {{ .Page.Lastmod | time.Format ":date_full" }}</span></p>
+          {{ end }}
         </div>
         {{ else }}
         <div style="margin-bottom: 80px;"></div>
@@ -126,7 +129,7 @@
           </div>
 
         <!--- Improve this page button --->
-        {{ if site.Params.GitRepo }}
+        {{ if (and site.Params.enableImprove site.Params.GitRepo) }}
           {{ if site.Params.GitBranch }}
             {{ .Scratch.Set "GitBranch" site.Params.GitBranch }}
           {{ else }}
