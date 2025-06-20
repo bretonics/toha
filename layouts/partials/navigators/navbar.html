@@ -2,6 +2,7 @@
 {{ $blogEnabled   := site.Params.features.blog.enable   | default false }}
 {{ $blogTitle  := site.Params.features.blog.title | default (i18n "posts") }}
 {{ $notesEnabled  := site.Params.features.notes.enable  | default false }}
+{{ $notesDropdown  := site.Params.features.notes.dropdown  | default false }}
 {{ $notesTitle := site.Params.features.notes.title  | default (i18n "notes") }}
 {{ $maxVisibleSections   := site.Params.topNavbar.maxVisibleSections   | default 5 }}
 
@@ -137,8 +138,22 @@
           <li class="nav-item">
             <a class="nav-link" id="blog-link" href="{{ path.Join (site.BaseURL | relLangURL) "posts" }}">{{ $blogTitle }}</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{ path.Join (site.BaseURL | relLangURL) "tags" }}">Tags</a></li>
+              <li><a class="dropdown-item" href="{{ path.Join (site.BaseURL | relLangURL) "categories" }}">Categories</a></li>
+              {{ if and $notesEnabled $notesDropdown }}
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" id="note-link" href="{{ path.Join (site.BaseURL | relLangURL) "notes" }}">{{ $notesTitle
+                  }}</a>
+              </li>
+              {{ end }}
+            </ul>
+          </li>
         {{ end }}
-        {{ if $notesEnabled }}
+        {{ if and $notesEnabled (not $notesDropdown) }}
           <li class="nav-item">
             <a class="nav-link" id="note-link" href="{{ path.Join (site.BaseURL | relLangURL) "notes" }}">{{ $notesTitle }}</a>
           </li>
