@@ -51,14 +51,14 @@
     }
   }
 
-  #theme {
+  #site-logo-author {
     color: get-light-color('inverse-text-color');
     img {
       width: 32px;
       display: inline-block;
     }
   }
-  #hugo {
+  #site-logo {
     &:hover {
       margin-right: 5px;
       @include transition();
