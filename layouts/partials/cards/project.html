@@ -19,7 +19,7 @@
         {{ end }}
         <div class="card-header">
           <div>
-            <div class="d-flex">
+            <div class="d-flex justify-content-between">
               {{ if .logo }}
 
                 {{ if eq (len (findRE ".*/.*" .logo) ) 0 }}
@@ -41,6 +41,9 @@
               {{ end }}
               
               <h5 class="card-title mb-0">{{ .name }}</h5>
+              {{ if .status }}
+                <span class="badge bg-info">{{ .status }}</span>
+              {{ end }}
             </div>
             <div class="sub-title">
               <span>{{ .role }}</span>
