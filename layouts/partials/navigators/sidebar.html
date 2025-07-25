@@ -9,7 +9,7 @@
   {{ if .HasChildren }}
     <!-- Add current entry -->
     <li>
-      <i data-feather="{{ $icon }}"></i><a class="{{$class}} list-link" href="{{ .URL }}"> {{.Name}}</a>
+      <a class="{{$class}} list-link" href="{{ .URL }}"><i data-feather="{{ $icon }}"></i> {{.Name}}</a>
       <!-- Add sub-tree -->
       <ul class="{{ $class }}">
         {{ partial "navigators/sidebar.html" (dict "menuName" $.menuName "menuItems" .Children "ctx" $.ctx) }}
