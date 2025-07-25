@@ -22,6 +22,26 @@
             </div>
           </ul>
         </div>
+        {{ if eq .Type "posts" }}
+          <div class="sidebar-tree">
+            <ul class="tree" id="tree">
+              <li id="list-heading"><a href="{{ "categories" | relLangURL }}" data-filter="all">{{ i18n "categories" }}</a></li>
+              <div class="subtree taxonomy-terms">
+                {{ $context := . }}
+                {{ partial "navigators/taxonomies.html" (dict "context" $context "taxo" "categories" "title" ( humanize
+                "categories" ) ) }}
+              </div>
+            </ul>
+          </div>
+          <div class="sidebar-tree">
+            <ul class="tree" id="tree">
+              <li id="list-heading"><a href="{{ "tags" | relLangURL }}" data-filter="all">{{ i18n "tags" }}</a></li>
+              <div class="subtree taxonomy-terms">
+                {{ partial "navigators/taxonomies.html" (dict "context" . "taxo" "tags" "title" ( humanize "tags" ) ) }}
+              </div>
+            </ul>
+          </div>  
+        {{ end }}
       </div>
     </div>
   </section>
