@@ -1,7 +1,10 @@
-/* in Hugo, Page kind can be either "section" or "page".*/
+/* In Hugo, The page kind is one of home, page, section, taxonomy, or term.*/
+/* See https: //gohugo.io/methods/page/kind/ */
+
 /* if it is section, then it's a page with a list of items, for example /posts*/
-/* if it is page, then it is a single page.*/
+/* if it is page, then it is a single page or one of taxonomy or term.*/
 body.kind-section,
+body.kind-taxonomy,
 body.kind-term,
 body.kind-page {
   .wrapper {
