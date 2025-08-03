@@ -120,7 +120,7 @@
               {{ else if (eq $key "researchgate") }}
                 <li><a href={{ printf "https://www.researchgate.net/profile/%s" $value }} target="_blank" rel="noopener">
                   <span><i class="fab fa-researchgate"></i></span> <span>{{ $author.name }}</span>
-                </a></li>            
+                </a></li>
               {{ else if reflect.IsMap $value }}
                 <li>
                   {{ if (and (isset $value "url") (isset $value "icon"))}}
