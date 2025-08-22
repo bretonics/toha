@@ -16,7 +16,8 @@ p {
   text-justify: inter-word;
 }
 
-input {
+input,
+label {
   color: get-light-color('text-color');
 }
 
@@ -89,7 +90,8 @@ html[data-theme='dark'] {
     color: get-dark-color('text-color');
   }
 
-  input {
+  input,
+  label {
     color: get-dark-color('text-color');
   }
 
