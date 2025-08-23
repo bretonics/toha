@@ -2,6 +2,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+{{ with .Params.canonical }}
+<link rel="canonical" href="{{ . | relLangURL }}" itemprop="url" />
+{{ else }}
+<link rel="canonical" href="{{ .Permalink }}" itemprop="url" />
+{{ end }}
+
 {{ partial "helpers/style-bundle.html" . }}
 
 <!--================= fab-icon =========================-->
