@@ -3,7 +3,7 @@
   {{ $sectionID = .section.id }}
 {{ end }}
 
-{{ $author:= site.Data.author }}
+{{ $author := site.Data.author }}
 {{ if (index site.Data site.Language.Lang).author }}
   {{ $author = (index site.Data site.Language.Lang).author }}
 {{ end }}
@@ -47,7 +47,7 @@
       </div>
       {{ if .resume }}
       <a href="{{ .resume | relURL }}" title="{{ i18n "resume"}}" target="#"
-        ><button class="btn btn-dark">{{ i18n "resume"}}</button></a
+        ><button class="btn btn-dark" data-umami-event="resume button">{{ i18n "resume"}}</button></a
       >
       {{ end }}
       {{ range .resourceLinks }}
